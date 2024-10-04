@@ -39,12 +39,10 @@ public class StudentList {
 			BufferedReader fileReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String read = fileReader.readLine();
-			System.out.println(read);
-			String i[] = read.split(",");	
-			Random x = new Random();
-			int y = x.nextInt();
-			System.out.println(i[y]);
+			String inputString = fileReader.readLine();
+			String i[] = inputString.split(",");	
+			Random randomNumber = new Random();
+			System.out.println(i[randomNumber.nextInt()]);
 			} catch (Exception e){} 
 			System.out.println(constants.LOADING_MESSAGE);			
 		}
@@ -57,10 +55,10 @@ public class StudentList {
 					new FileWriter("students.txt", true));
 			String write = args[0].substring(1);
 	        Date d = new Date();
-	        String df = "dd/mm/yyyy-hh:mm:ss a";
-	        DateFormat dateFormat = new SimpleDateFormat(df);
-	        String fd= dateFormat.format(d);
-			fileWriter.write(", "+write+"\nList last updated on "+fd);
+	        String dateFormation = "dd/mm/yyyy-hh:mm:ss a";
+	        DateFormat dateFormat = new SimpleDateFormat(dateFormation);
+
+			fileWriter.write(", "+write+"\nList last updated on "+ dateFormat.format(d));
 			fileWriter.close();
 			} catch (Exception e){}
 							
