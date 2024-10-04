@@ -5,7 +5,9 @@ public class StudentList {
 	public static void main(String[] args) {
 
 //		Check arguments
-		if(args[0].equals("a")) {
+		if(args[0].equals("a"))
+		 {
+
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
@@ -13,10 +15,14 @@ public class StudentList {
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
 			String i[] = r.split(",");			
-			for(String j : i) { System.out.println(j); }
+			for(String j : i)
+			 {
+				 System.out.println(j);
+			 }
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");
 		}
+
 		else if(args[0].equals("r")) 
 		{
 			System.out.println("Loading data ...");			
@@ -28,12 +34,14 @@ public class StudentList {
 			System.out.println(r);
 			String i[] = r.split(",");	
 			Random x = new Random();
-				int y = x.nextInt();
-					System.out.println(i[y]);
+			int y = x.nextInt();
+			System.out.println(i[y]);
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");			
 		}
-		else if(args[0].contains("+")){
+		else if(args[0].contains("+"))
+		{
+
 			System.out.println("Loading data ...");			
 			try {
 			BufferedWriter s = new BufferedWriter(
