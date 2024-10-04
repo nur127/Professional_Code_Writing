@@ -2,7 +2,11 @@ import java.io.*;
 import java.text.*;
 import java.util.*;
 public class StudentList {
+
+
 	public static void main(String[] args) {
+
+		Constant constants = new Constant() ;
 
 //		Check arguments
 	boolean isValidArg = true ;
@@ -12,7 +16,7 @@ public class StudentList {
 		if(args[0].equals("a"))
 		 {
 			isValidArg = false ;
-			System.out.println("Loading data ...");			
+			System.out.println(constants.LOADING_MESSAGE);			
 			try {
 			BufferedReader fileReader = new BufferedReader(
 					new InputStreamReader(
@@ -24,30 +28,30 @@ public class StudentList {
 				 System.out.println(j);
 			 }
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");
+			System.out.println(constants.LOADING_MESSAGE);
 		}
 
 		else if(args[0].equals("r")) 
 		{
 			isValidArg = false ;
-			System.out.println("Loading data ...");			
+			System.out.println(constants.LOADING_MESSAGE);			
 			try {
 			BufferedReader fileReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String read = fileReader.readLine();
-			System.out.println(r);
+			System.out.println(read);
 			String i[] = read.split(",");	
 			Random x = new Random();
 			int y = x.nextInt();
 			System.out.println(i[y]);
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");			
+			System.out.println(constants.LOADING_MESSAGE);			
 		}
 		else if(args[0].contains("+"))
 		{
 			isValidArg = false ;
-			System.out.println("Loading data ...");			
+			System.out.println(constants.LOADING_MESSAGE);			
 			try {
 			BufferedWriter fileWriter = new BufferedWriter(
 					new FileWriter("students.txt", true));
@@ -60,12 +64,12 @@ public class StudentList {
 			fileWriter.close();
 			} catch (Exception e){}
 							
-			System.out.println("Data Loaded.");	
+			System.out.println(constants.LOADING_MESSAGE);	
 		}
 		else if(args[0].contains("?")) 
 		{
 			isValidArg = false ;
-			System.out.println("Loading data ...");			
+			System.out.println(constants.LOADING_MESSAGE);			
 			try {
 			BufferedReader fileReader = new BufferedReader(
 					new InputStreamReader(
@@ -81,12 +85,12 @@ public class StudentList {
 				}
 			}
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");				
+			System.out.println(constants.LOADING_MESSAGE);				
 		}
 		else if(args[0].contains("c")) 
 		{
 			isValidArg = false ;
-			System.out.println("Loading data ...");			
+			System.out.println(constants.LOADING_MESSAGE);			
 			try {
 			BufferedReader fileReader = new BufferedReader(
 					new InputStreamReader(
@@ -104,11 +108,11 @@ public class StudentList {
 			}
 			System.out.println(count +" word(s) found " + a.length);
 			} catch (Exception e){} 
-			System.out.println("Data Loaded.");				
+			System.out.println(constants.LOADING_MESSAGE);				
 		}
 
 		else{
-			System.out.println("Invalid Argument . Please Give an valid Argument like : (a,r,c) ?Studentname +Studentname + Studentname ");
+			System.out.println(constants.WRONG_ARGUMENT_MESSAGE);
 
 			Scanner scanner = new Scanner(System.in);
 			String getarg = scanner.nextLine();
