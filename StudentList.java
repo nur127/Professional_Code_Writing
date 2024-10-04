@@ -5,9 +5,13 @@ public class StudentList {
 	public static void main(String[] args) {
 
 //		Check arguments
+	boolean isValidArg = true ;
+
+	while(isValidArg)
+	{
 		if(args[0].equals("a"))
 		 {
-
+			isValidArg = false ;
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
@@ -25,6 +29,7 @@ public class StudentList {
 
 		else if(args[0].equals("r")) 
 		{
+			isValidArg = false ;
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
@@ -41,7 +46,7 @@ public class StudentList {
 		}
 		else if(args[0].contains("+"))
 		{
-
+			isValidArg = false ;
 			System.out.println("Loading data ...");			
 			try {
 			BufferedWriter s = new BufferedWriter(
@@ -59,6 +64,7 @@ public class StudentList {
 		}
 		else if(args[0].contains("?")) 
 		{
+			isValidArg = false ;
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
@@ -79,6 +85,7 @@ public class StudentList {
 		}
 		else if(args[0].contains("c")) 
 		{
+			isValidArg = false ;
 			System.out.println("Loading data ...");			
 			try {
 			BufferedReader s = new BufferedReader(
@@ -99,5 +106,16 @@ public class StudentList {
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
+
+		else{
+			System.out.println("Invalid Argument . Please Give an valid Argument like : (a,r,c) ?Studentname +Studentname + Studentname ");
+
+			Scanner scanner = new Scanner(System.in);
+			String getarg = scanner.nextLine();
+			args = getarg.split("//s+");
+			isValidArg = true ;
+
+		}
+	}
 	}
 }
