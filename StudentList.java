@@ -3,6 +3,39 @@ import java.text.*;
 import java.util.*;
 public class StudentList {
 
+	public static String fileReader (String fileName){
+		String inputString ;
+		try {
+			BufferedReader fileReader = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(fileName))); 
+
+							inputString = fileReader.readLine();
+							fileReader.close();
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+		return inputString;
+	}
+
+	public static String fileWriter(String fileName , String dataName){
+		try {
+			BufferedWriter fileWriter = new BufferedWriter(
+					new FileWriter("students.txt", true));
+	        Date d = new Date();
+	        String dateFormation = "dd/mm/yyyy-hh:mm:ss a";
+	        DateFormat dateFormat = new SimpleDateFormat(dateFormation);
+
+			fileWriter.write(", "+dataName+"\nList last updated on "+ dateFormat.format(d));
+			fileWriter.close();
+			
+		} catch (Exception e) {
+			return (e.getMessage());
+		}
+		return  "Succesfully Writed";
+
+	}
+
 
 	public static void main(String[] args) {
 
@@ -17,17 +50,14 @@ public class StudentList {
 		 {
 			isValidArg = false ;
 			System.out.println(constants.LOADING_MESSAGE);			
-			try {
-			BufferedReader fileReader = new BufferedReader(
-					new InputStreamReader(
-							new FileInputStream("students.txt"))); 
-			String read = fileReader.readLine();
+
+			
+			String read = fileReader("students.txt");
 			String i[] = read.split(",");			
 			for(String j : i)
 			 {
 				 System.out.println(j);
 			 }
-			} catch (Exception e){} 
 			System.out.println(constants.LOADING_MESSAGE);
 		}
 
@@ -35,44 +65,29 @@ public class StudentList {
 		{
 			isValidArg = false ;
 			System.out.println(constants.LOADING_MESSAGE);			
-			try {
-			BufferedReader fileReader = new BufferedReader(
-					new InputStreamReader(
-							new FileInputStream("students.txt"))); 
-			String inputString = fileReader.readLine();
+	
+			String inputString = fileReader("students.txt");
 			String i[] = inputString.split(",");	
 			Random randomNumber = new Random();
 			System.out.println(i[randomNumber.nextInt()]);
-			} catch (Exception e){} 
 			System.out.println(constants.LOADING_MESSAGE);			
 		}
 		else if(args[0].contains("+"))
 		{
 			isValidArg = false ;
-			System.out.println(constants.LOADING_MESSAGE);			
-			try {
-			BufferedWriter fileWriter = new BufferedWriter(
-					new FileWriter("students.txt", true));
-			String write = args[0].substring(1);
-	        Date d = new Date();
-	        String dateFormation = "dd/mm/yyyy-hh:mm:ss a";
-	        DateFormat dateFormat = new SimpleDateFormat(dateFormation);
+			System.out.println(constants.LOADING_MESSAGE);	
 
-			fileWriter.write(", "+write+"\nList last updated on "+ dateFormat.format(d));
-			fileWriter.close();
-			} catch (Exception e){}
-							
+			String name = args[0].substring(1);
+			fileWriter("student.txt" ,name);
+
 			System.out.println(constants.LOADING_MESSAGE);	
 		}
 		else if(args[0].contains("?")) 
 		{
 			isValidArg = false ;
 			System.out.println(constants.LOADING_MESSAGE);			
-			try {
-			BufferedReader fileReader = new BufferedReader(
-					new InputStreamReader(
-							new FileInputStream("students.txt"))); 
-			String r = fileReader.readLine();
+	
+			String r = fileReader("students.txt");
 			String i[] = r.split(",");	
 			boolean done = false;
 			String t = args[0].substring(1);
@@ -82,18 +97,14 @@ public class StudentList {
 						done=true;
 				}
 			}
-			} catch (Exception e){} 
 			System.out.println(constants.LOADING_MESSAGE);				
 		}
 		else if(args[0].contains("c")) 
 		{
 			isValidArg = false ;
 			System.out.println(constants.LOADING_MESSAGE);			
-			try {
-			BufferedReader fileReader = new BufferedReader(
-					new InputStreamReader(
-							new FileInputStream("students.txt"))); 
-			String D = fileReader.readLine();
+			
+			String D = fileReader("students.txt");
 			char a[] = D.toCharArray();			
 			boolean in_word = false;
 			int count=0;
@@ -105,7 +116,6 @@ public class StudentList {
 				}
 			}
 			System.out.println(count +" word(s) found " + a.length);
-			} catch (Exception e){} 
 			System.out.println(constants.LOADING_MESSAGE);				
 		}
 
