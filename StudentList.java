@@ -89,12 +89,10 @@ public class StudentList {
 	
 			String r = fileReader("students.txt");
 			String i[] = r.split(",");	
-			boolean done = false;
-			String t = args[0].substring(1);
-			for(int idx = 0; idx<i.length && !done; idx++) {
-				if(i[idx].equals(t)) {
-					System.out.println("We found it!");
-						done=true;
+			String name = args[0].substring(1);
+			for(String take :i) {
+				if(name.equals(take)){
+					System.out.println("We Found It");
 				}
 			}
 			System.out.println(constants.LOADING_MESSAGE);				
